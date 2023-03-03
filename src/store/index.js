@@ -7,7 +7,8 @@ export default createStore({
     state: {
         isLogged: false,
         user: null,
-        token: null
+        token: null,
+        favorites: []
     },
     actions,
     getters,

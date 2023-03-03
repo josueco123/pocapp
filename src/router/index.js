@@ -10,18 +10,16 @@ const isAuthenticatedGuard = async( to, from, next ) => {
   else next({ name: 'login' })
 }
 
-const isLogged = async( to, from, next ) => {
-
-  const { ok } = await store.dispatch('checkAuthentication')
-
-  if ( ok && to.name === 'login' ) next({ name: 'movies.list'})
-}
-
 const testChildRoute = (prop) => [
   {
     path: 'list',
     name: prop + '.list',
-    component: () => import('../views/ListMovies.vue')
+    component: () => import('../views/ListMoviesView.vue')
+  },
+  {
+    path: 'detail/:id',
+    name: prop + '.detail',
+    component: () => import('../views/DetailMovieView.vue')
   },
   {
     path: 'default',
@@ -33,11 +31,13 @@ const testChildRoute = (prop) => [
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
-    
+   {
+    path: '/',
+    redirect:{ name: 'login' }
+   },
     {
       path: '/login',
       name: 'login',
-      beforeEnter: [ isLogged ],
       component: () => import('../views/AuthView.vue')
     },
     {

@@ -26,11 +26,19 @@ export const checkAuthentication = async ({ commit }) => {
     const token = sessionStorage.getItem('token')
 
     if (!token) {
-        //commit('logout')
+        commit('logout')
         return { ok: false, message: 'no token' }
     } else {
         return { ok: true, message: 'you are logged' }
     }
+}
 
+export const addMovieToFavorite = async ({ commit }, movie) =>{
 
+    try {
+        commit('addMovie',{ movie})
+        return { ok: true, message: 'no token' }
+    } catch (error) {
+        return { ok: false, message: error.response.data.error.message }
+    }
 }

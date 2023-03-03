@@ -18,3 +18,8 @@ export const logout = (state) => {
 
     sessionStorage.removeItem('token')
 }
+
+export const addMovie = (state, { movie }) =>{
+
+    state.favorites.push(movie)
+}
