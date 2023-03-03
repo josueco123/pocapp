@@ -1,6 +1,11 @@
 
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+canvas{
+
+    width:500px !important;
+    height:500px !important;
+    margin: 0 auto;
+  }

@@ -43,6 +43,7 @@ const router = createRouter({
     {
       path: '/movies',
       beforeEnter: [ isAuthenticatedGuard ],
+      redirect:{ name: 'movies.list' },
       component: () => import('../layouts/MainLayout.vue'),
       children: testChildRoute('movies')
     },
