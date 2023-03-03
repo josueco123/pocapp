@@ -9,12 +9,12 @@
 				<form class="login100-form validate-form p-b-33 p-t-5" @submit.prevent="onSubmit">
 
 					<div class="wrap-input100 validate-input" data-validate = "Enter username">
-						<input v-model="loginForm.email" class="input100" type="email" placeholder="Email" required>
+						<input v-model="loginForm.email" class="input100" id="email" type="email" placeholder="Email" required>
 						<span class="focus-input100" data-placeholder="&#xe82a;"></span>
 					</div>
 
 					<div class="wrap-input100 validate-input" data-validate="Enter password">
-						<input v-model="loginForm.password" class="input100" type="password" placeholder="Password" required>
+						<input v-model="loginForm.password" class="input100" id="password" type="password" placeholder="Password" required>
 						<span class="focus-input100" data-placeholder="&#xe80f;"></span>
 					</div>
 

@@ -10,6 +10,14 @@ const isAuthenticatedGuard = async( to, from, next ) => {
   else next({ name: 'login' })
 }
 
+const isLogged = async(to,from,next) =>{
+
+  const { ok } = await store.dispatch('checkAuthentication')
+
+  if(ok && to.name=== 'login') next({ name: 'movies.list' })
+  else next()
+}
+
 const testChildRoute = (prop) => [
   {
     path: 'list',
@@ -38,6 +46,7 @@ const router = createRouter({
     {
       path: '/login',
       name: 'login',
+      beforeEnter: [ isLogged ],
       component: () => import('../views/AuthView.vue')
     },
     {
